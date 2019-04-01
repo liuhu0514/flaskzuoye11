@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>项目详情</title>
+		<link rel="stylesheet" type="text/css" href="../static/css/jquery-ui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/all.css"/>
+		
+		<script src="../static/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+	</head>
+	<body>
+		<div class="container bg1">
+			<ul class="nav nav-tabs">
+				{% if userinfo %}
+					<a href="/register" style="color: #E4B9B9;font-size: 20px;display: inline-block; margin-top: 6px;">欢迎{{userinfo}}来到小虎好文章文章详情界面</a>
+				{% endif %}
+				
+				<li role="presentation" style="float: right;"><a href="/">返回首页</a></li>
+				<li role="presentation" style="float: right;"><a href="/list">返回列表</a></li>
+				<li role="presentation" class="active" style="float: right;"><a href="#">文章详情</a></li>
+			</ul>
+			<br>
+			<h4>文章：</h4>
+			<h2 style="text-align: center;">{{pname}}</h2>
+			<span>{{nr}}</span>
+			<a href="/modify/{{p.id}}" style="display: block;float: right;">修改</a>	
+		</div>
+		
+		<script type="text/javascript">
+			
+			
+		</script>
+		
+		
+		
+	</body>
+</html>

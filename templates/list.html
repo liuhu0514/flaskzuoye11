@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>项目列表</title>
+		<link rel="stylesheet" type="text/css" href="../static/css/jquery-ui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/all.css"/>
+		
+		<script src="../static/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+	</head>
+	<body>
+		<div class="container bg1">
+			<ul class="nav nav-tabs">
+				{% if userinfo %}
+					<a href="/register" style="color: #E4B9B9;font-size: 20px;display: inline-block; margin-top: 6px;">欢迎{{userinfo}}来到小虎好文章列表界面</a>
+				{% endif %}
+				<li role="presentation" style="float: right;"><a href="/quit">退出登录</a></li>
+				<li role="presentation" style="float: right;"><a href="/">返回首页</a></li>
+				<li role="presentation" class="active" style="float: right;"><a href="/list">文章列表</a></li>
+			</ul>
+			<br>
+			<form action="/list" method="post">
+				{% if content %}
+					搜索标题：<input type="text" name="search" placeholder="请输入搜索内容" value="{{content}}"/>
+				{% else %}
+					搜索标题：<input type="text" name="search" placeholder="请输入搜索内容"/>
+				{% endif %}
+				<input type="submit" value="搜索"/>
+			</form>
+			{% if ps %}
+				<table class="table table-striped">
+				  <tr>
+					<td>id</td>
+					<td>name</td>
+					<td>操作</td>
+				  </tr>
+				  {% for p in ps %}
+					  <tr>
+						<td>{{p.id}}</td>
+						<td><a href="/detail/{{p.id}}">{{p.pname}}</a></td>
+						<td><a href="/delete/{{p.id}}">删除</a><a href="/modify/{{p.id}}" >修改</a></td>
+					  </tr>
+					
+				  {% endfor %}
+				</table>
+			{% elif sps %}
+				<table class="table table-striped">
+				  <tr>
+					<td>id</td>
+					<td>name</td>
+					<td>操作</td>
+				  </tr>
+				  {% for p in sps %}
+					  <tr>
+						<td>{{p.id}}</td>
+						<td><a href="/detail/{{p.id}}">{{p.pname}}</a></td>
+						<td><a href="/delete/{{p.id}}">删除</a></td>
+					  </tr>
+					
+				  {% endfor %}
+				</table>
+			{% else %}
+				<h2><a href="/add">您还没有项目，点击添加！</a></h2>
+			{% endif %}
+			{% if tips %}
+				<h5 style="color: red;">{{tips}}</h5>
+			{% endif %}
+			<a href="/add">添加文章</a>
+				
+		</div>
+		
+		
+		
+		
+	</body>
+</html>

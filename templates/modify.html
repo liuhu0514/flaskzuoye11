@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>文章修改</title>
+		<link rel="stylesheet" type="text/css" href="../static/css/jquery-ui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../static/css/all.css"/>
+		
+		<script src="../static/js/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<div class="container bg1">
+			<ul class="nav nav-tabs">
+				{% if userinfo %}
+					<a href="/register" style="color: #E4B9B9;font-size: 20px;display: inline-block; margin-top: 6px;">欢迎{{userinfo}}来到小虎好文章文章修改界面</a>
+				{% endif %}
+				
+				<li role="presentation" style="float: right;"><a href="/">返回首页</a></li>
+				<li role="presentation" style="float: right;"><a href="/list">文章列表</a></li>
+				<li role="presentation" style="float: right;"><a href="/add">添加文章</a></li>
+				<li role="presentation" class="active" style="float: right;"><a href="#">修改文章</a></li>
+			</ul>
+			<br>
+			{% if tips %}
+				<h5 style="color: red;">{{tips}}</h5>
+			{% endif %}
+			<form action="/modify/{{p.id}}" method="post">
+				项目名称：<input type="text" name="pname" value="{{p.pname}}" style="width: 100%;"/>
+				<br>
+				项目详情：
+				<br>
+				<textarea rows="10"  name="pdetails" style="width: 100%;">{{p.pdetails}}</textarea>
+				<br>
+				<input type="submit" value="确定修改"/>
+			</form>
+			<a href="/detail/{{p.id}}">返回详情</a>
+		</div>
+		
+		
+	</body>
+</html>
